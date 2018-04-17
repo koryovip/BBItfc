@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface Exchange {
 
-    public List<CandleValue> getCandles(KRCandleType candleType, int limit) throws Exception;
+    public List<CandleValue> getCandles(final KRCandleType candleType, final int limit) throws Exception;
 
 }
