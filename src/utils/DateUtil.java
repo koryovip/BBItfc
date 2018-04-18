@@ -93,6 +93,10 @@ public class DateUtil {
         return sdf5.get().format(date);
     }
 
+    final public String format5(long dateTime) {
+        return this.format5(new Date(dateTime));
+    }
+
     public static void main(String[] args) {
         System.out.println(DateUtil.me().format1(new Date()));
     }
