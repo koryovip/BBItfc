@@ -25,6 +25,10 @@ public class OtherUtil {
         return list.get(list.size() - 1);
     }
 
+    public BigDecimal scale(final BigDecimal val, final int round) {
+        return val.setScale(round, RoundingMode.HALF_UP);
+    }
+
     public void testRoundingMode() {
         BigDecimal a = new BigDecimal("3.14561");
         int round = 4;
