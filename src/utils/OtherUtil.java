@@ -2,6 +2,7 @@ package utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Iterator;
 import java.util.List;
 
 public class OtherUtil {
@@ -27,6 +28,37 @@ public class OtherUtil {
 
     public BigDecimal scale(final BigDecimal val, final int round) {
         return val.setScale(round, RoundingMode.HALF_UP);
+    }
+
+    public long[] toArray(List<Long> list) {
+        return this.toArray(list, new LongRapple<Long>() {
+            @Override
+            public long getValue(Long t) {
+                return t;
+            }
+        });
+    }
+
+    public <T> long[] toArray(List<T> list, LongRapple<T> rp) {
+        int size = list.size();
+        long[] array = new long[size];
+        Iterator<T> iter = list.iterator();
+        for (int ii = 0; ii < size; ii++) {
+            array[ii] = rp.getValue(iter.next());
+        }
+        return array;
+    }
+
+    public interface LongRapple<T> {
+        public long getValue(T t);
+    }
+
+    public void sleeeeeep(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void testRoundingMode() {
