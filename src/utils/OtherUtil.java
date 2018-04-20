@@ -12,6 +12,9 @@ public class OtherUtil {
         return singleton;
     }
 
+    private OtherUtil() {
+    }
+
     public <T> T firstItem(List<T> list) {
         if (list.size() <= 0) {
             return null;
