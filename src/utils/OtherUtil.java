@@ -29,6 +29,15 @@ public class OtherUtil {
         return list.get(list.size() - 1);
     }
 
+    private final BigDecimal B100 = new BigDecimal(100);
+
+    public BigDecimal persent(final BigDecimal val1, final BigDecimal val2) {
+        if (val1.compareTo(BigDecimal.ZERO) == 0 && val2.compareTo(BigDecimal.ZERO) == 0) {
+            return BigDecimal.ZERO;
+        }
+        return val1.divide(val1.add(val2), 2, RoundingMode.HALF_UP).multiply(B100);
+    }
+
     public BigDecimal scale(final BigDecimal val, final int round) {
         return val.setScale(round, RoundingMode.HALF_UP);
     }
@@ -75,5 +84,9 @@ public class OtherUtil {
         System.out.println(a.setScale(round, RoundingMode.HALF_UP)); // 四捨五入（もっとも近い数字に丸める）
         System.out.println(a.setScale(round, RoundingMode.UP)); // 切り上げ（0から離れるように丸める）
         // System.out.println(a.setScale(round, RoundingMode.UNNECESSARY)); // 何もしない（丸めが必要でないことを表す）
+    }
+
+    public static void main(String[] args) {
+        System.out.println(OtherUtil.me().persent(new BigDecimal(90), new BigDecimal(50)));
     }
 }
