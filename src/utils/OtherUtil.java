@@ -29,13 +29,21 @@ public class OtherUtil {
         return list.get(list.size() - 1);
     }
 
-    private final BigDecimal B100 = new BigDecimal(100);
+    public BigDecimal B100 = new BigDecimal(100);
 
     public BigDecimal persent(final BigDecimal val1, final BigDecimal val2) {
         if (val1.compareTo(BigDecimal.ZERO) == 0 && val2.compareTo(BigDecimal.ZERO) == 0) {
             return BigDecimal.ZERO;
         }
         return val1.divide(val1.add(val2), 2, RoundingMode.HALF_UP).multiply(B100);
+    }
+
+    public BigDecimal average(final int round, final BigDecimal... values) {
+        BigDecimal total = BigDecimal.ZERO;
+        for (BigDecimal value : values) {
+            total = total.add(value);
+        }
+        return total.divide(new BigDecimal(values.length), round, RoundingMode.HALF_UP);
     }
 
     public BigDecimal scale(final BigDecimal val, final int round) {
@@ -88,5 +96,6 @@ public class OtherUtil {
 
     public static void main(String[] args) {
         System.out.println(OtherUtil.me().persent(new BigDecimal(90), new BigDecimal(50)));
+        System.out.println(OtherUtil.me().average(3, new BigDecimal(90.123), new BigDecimal(90.190)));
     }
 }
