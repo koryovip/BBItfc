@@ -40,13 +40,13 @@ public class DateUtil {
         sdf3 = new ThreadLocal<DateFormat>() {
             @Override
             protected DateFormat initialValue() {
-                return new SimpleDateFormat("YYYYMMdd");
+                return new SimpleDateFormat("yyyyMMdd");
             }
         };
         sdf4 = new ThreadLocal<DateFormat>() {
             @Override
             protected DateFormat initialValue() {
-                return new SimpleDateFormat("YYYYMM");
+                return new SimpleDateFormat("yyyyMM");
             }
         };
         sdf5 = new ThreadLocal<DateFormat>() {

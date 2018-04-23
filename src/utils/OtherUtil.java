@@ -2,6 +2,7 @@ package utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -97,5 +98,11 @@ public class OtherUtil {
     public static void main(String[] args) {
         System.out.println(OtherUtil.me().persent(new BigDecimal(90), new BigDecimal(50)));
         System.out.println(OtherUtil.me().average(3, new BigDecimal(90.123), new BigDecimal(90.190)));
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2017, 1 - 1, 1, 16, 0, 0);
+        System.out.println(calendar.getTime());
+        calendar.add(Calendar.DATE, -1);
+        System.out.println(calendar.getTime());
     }
 }
