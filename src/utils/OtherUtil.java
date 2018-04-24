@@ -2,7 +2,6 @@ package utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,11 +31,26 @@ public class OtherUtil {
 
     public BigDecimal B100 = new BigDecimal(100);
 
+    /**
+     * (val1+val2)/2
+     * @param val1
+     * @param val2
+     * @return
+     */
     public BigDecimal persent(final BigDecimal val1, final BigDecimal val2) {
         if (val1.compareTo(BigDecimal.ZERO) == 0 && val2.compareTo(BigDecimal.ZERO) == 0) {
             return BigDecimal.ZERO;
         }
         return val1.divide(val1.add(val2), 2, RoundingMode.HALF_UP).multiply(B100);
+    }
+
+    /**val*(persent/100)
+     * @param val
+     * @param persent
+     * @return
+     */
+    public BigDecimal persent2(final BigDecimal val, final BigDecimal persent) {
+        return val.multiply(persent.divide(B100));
     }
 
     public BigDecimal average(final int round, final BigDecimal... values) {
@@ -97,12 +111,13 @@ public class OtherUtil {
 
     public static void main(String[] args) {
         System.out.println(OtherUtil.me().persent(new BigDecimal(90), new BigDecimal(50)));
+        System.out.println(OtherUtil.me().persent2(new BigDecimal(100), new BigDecimal(94.657)));
         System.out.println(OtherUtil.me().average(3, new BigDecimal(90.123), new BigDecimal(90.190)));
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2017, 1 - 1, 1, 16, 0, 0);
-        System.out.println(calendar.getTime());
-        calendar.add(Calendar.DATE, -1);
-        System.out.println(calendar.getTime());
+        //
+        //        Calendar calendar = Calendar.getInstance();
+        //        calendar.set(2017, 1 - 1, 1, 16, 0, 0);
+        //        System.out.println(calendar.getTime());
+        //        calendar.add(Calendar.DATE, -1);
+        //        System.out.println(calendar.getTime());
     }
 }
