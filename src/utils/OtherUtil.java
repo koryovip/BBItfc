@@ -29,7 +29,9 @@ public class OtherUtil {
         return list.get(list.size() - 1);
     }
 
-    public BigDecimal B100 = new BigDecimal(100);
+    final public BigDecimal B100 = new BigDecimal(100);
+    final public BigDecimal ONE = new BigDecimal(1);
+    final public BigDecimal TWO = new BigDecimal(2);
 
     /**
      * (val1+val2)/2
