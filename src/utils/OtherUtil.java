@@ -55,6 +55,14 @@ public class OtherUtil {
         return val.multiply(persent.divide(B100));
     }
 
+    public BigDecimal persent3(final BigDecimal val1, final BigDecimal val2) {
+        return persent3(val1, val2, 0);
+    }
+
+    public BigDecimal persent3(final BigDecimal val1, final BigDecimal val2, final int round) {
+        return val1.multiply(B100).divide(val2, round, RoundingMode.DOWN);
+    }
+
     public BigDecimal average(final int round, final BigDecimal... values) {
         BigDecimal total = BigDecimal.ZERO;
         for (BigDecimal value : values) {

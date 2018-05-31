@@ -84,6 +84,9 @@ public class DateUtil {
     final public String format3(Date date) {
         return sdf3.get().format(date);
     }
+    final public String format3(long dateTime) {
+        return this.format3(new Date(dateTime));
+    }
 
     final public String format4(Date date) {
         return sdf4.get().format(date);
